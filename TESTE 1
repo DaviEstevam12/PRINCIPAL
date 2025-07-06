@@ -1,0 +1,242 @@
+#EXEMPLO 1
+#----------------SERVIÇO--------------
+def conta_palavra(texto):
+    '''conta o número de palavras no texto'''
+    
+    lista_palavras = texto.split()
+    return len(lista_palavras)
+
+#---------------APRESENTAÇÃO----------
+def pede_string(msg):
+    '''Pede uma string ao usuário.'''
+    
+    texto = input(msg)
+    return texto
+
+
+#---------------MAIN------------------
+#-------------------------------------
+def main():
+    print(f"\n***** CONTADOR DE PALAVRAS*****\n")
+    texto = pede_string("Digite seu texto:")
+    n_palavras = conta_palavra(texto)
+    print(f"\nO seu texto possui: {n_palavras}")
+    print(f"\n*******FIM DO JOGO*******\n")
+
+'''main()'''
+
+
+
+
+
+
+
+#EXEMPLO 2
+#---------------SERVIÇO-----------------
+def eh_bissexto(ano):
+    '''indica se o ano é bissexto. int --> bool'''
+    
+    return (ano % 400 == 0) or (ano % 4 == 0 and ano % 100 != 0)
+
+#--------------APRESENTAÇÃO--------------
+def pede_inteiro(msg):
+    '''Recebe um inteiro digitado pelo usuário'''
+    
+    num = int(input(msg))
+    return num
+
+#-------------MAIN----------------------
+#---------------------------------------
+def main():
+    '''Função principal do programa VERIFICA BISSEXTO'''
+    
+    print("\n**********VERIFICA SE É BISSEXTO*********\n")
+    ano = pede_inteiro('Digite um ano:')
+    if eh_bissexto(ano):
+        print(f"\nO ano {ano} é bisssexto")
+    else:
+        print(f"\nO ano {ano} não é bissexto")
+    print("\n******FIM DO PROGRAMA*********\n")
+
+'''main()'''
+
+
+
+
+
+#EXEMPLO 3
+#--------------SERVIÇO------------
+def area_trapezio(B,b,h):
+    '''Cálculo da área do trapézio'''
+    
+    area = (B+b)*h / 2
+    return area
+
+#--------------APRESENTAÇÃO-------
+def pede_float(msg):
+    '''Pede ao usuário um número decimal'''
+    
+    num = float(input(msg))
+    return num
+
+#---------------MAIN--------------
+#---------------------------------
+def main():
+    B = pede_float("Digit um valor para base maior:")
+    b = pede_float("Digite um valor para base menor:")
+    h = pede_float("Digite um valor para a altura:")
+    area = area_trapezio(B,b,h)
+    print(f"\nA área do trapézio é :{area}")
+    print(f"\n*********FIM DO PROGRAMA**********\n")
+
+'''main()'''
+
+
+
+
+
+
+
+
+
+#EXEMPLO 4
+#--------------SERVIÇO-------------
+def calculo_media(lista):
+    '''Calcula a media dos valores em uma lista. list --> float.'''
+    
+    return sum(lista) / len(lista)
+
+def pede_float(msg):
+    '''Recebe do usuário um número real. str --> float.'''
+    
+    return float(input(msg))
+
+def pede_lista_reais():
+    '''Recebe do usuário uma lista de valores reais. str --> list.'''
+    
+    n = int(input("Digite o tamanho do conjuto de dados:"))
+    lits = []
+    for i in range(n):
+        num = pede_float(f"Digite um valor ({i+1}/{n}:")
+        lista.append(num)
+    return lista
+
+#--------------MAIN-------------------
+#-------------------------------------
+def main():
+    '''Função principal que calcula a media'''
+    
+    print("\n******CALCULADORA DE MEDIA*********\n")
+    lista = pede_lista_reais()
+    media = calcula_media(lista)
+    print(f"\nA media dos valores fornecidos é {media:.2f}")
+    print("\n*********FIM DO PROGRAMA***********\n")
+
+
+'''main()'''
+
+
+
+
+#EXEMPLO 5
+#---------------SERVIÇO---------------
+def soma_matrizes(A,B):
+    '''Calcula a soma de duas matrizes. list, list --> list'''
+    
+    nova_matriz = []
+    for i in range(len(A)):
+        linha = []
+        for j in range(len(A[0])):
+            linha.append(A[i][j] + B[i][j])
+        nova_matriz.append(linha)
+    return nova_matriz
+
+#---------------APRESENTAÇÃO--------------
+def pede_inteiro(msg):
+    '''Recebe do usuário um numero inteiro. str --> int'''
+    return int(input(msg))
+
+def pede_matriz(m,n):
+    '''Recebe do usuário uma matriz de inteiros, com as dadas dimensões. str --> list(list)'''
+    
+    matriz = []
+    for i in range(m):
+        linha = []
+        for j in range(n):
+            num = pede_inteiro(f"MAT[{i}][{j}]:")
+            linha.append(num)
+        matriz.append(linha)
+    return matriz
+
+def exibe_matriz(matriz):
+    '''Exibe uma matriz em formato tabular. list(list) --> None'''
+    
+    for linha in matriz:
+        print('|',end='\t')
+        for x in linha:
+            print(f"{x:2d}", end='\t')
+        print('|')
+
+
+#----------------MAIN----------------------
+#------------------------------------------
+def main():
+    '''Função principal do programa'''
+    
+    print("\n***********SOMA DAS MATRIZES**********\n")
+    m = pede_inteiro("Numero de linhas:")
+    n = pede_inteiro("Numero de colunas:")
+    print("\nMatriz 1:")
+    A = pede_matriz(m,n)
+    print("\nMatriz 2:")
+    B = pede_matriz(m,n)
+    nova_matriz = soma_matrizes(A,B)
+    print("\n******RESULTADO*********\n")
+    exibe_matriz(nova_matriz)
+
+    print("\n*********** FIM DO PROGRAMA *********\n")
+
+'''main()'''
+
+
+import random
+#--------------SERVIÇO---------------------
+def joga_dado(n):
+    '''Retorna o resultado de um dado de n faces. int --> int'''
+    
+    return random.randint(1,n)
+
+#--------------APRESENTAÇÃO----------------
+def pede_inteiro(msg):
+    '''Recebe do usuário um número inteiro. str --> int'''
+    
+    return int(input(msg))
+
+#--------------MAIN------------------------
+def main():
+    '''Função principal do programa ROLAGEM DE DADOS'''
+    
+    print('\n*********ROLAGEM DE DADOS**********\n')
+    n = pede_inteiro('Numero de faces do dado (SAIR = 0):')
+    while n != 0:
+        print(f'O resultado foi {joga_dado(n)}\n')
+        n = pede_inteiro('Numero de faces do dado (SAIR = 0):')
+        print('\n*******FIM DO PROGRAMA*********\n')
+
+'''main()'''
+    
+        
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
