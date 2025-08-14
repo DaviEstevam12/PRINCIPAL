@@ -1,0 +1,45 @@
+def somar(v1,v2):
+    if len(v1) != len(v2):
+        raise ValueError("Os vetores devem ter o mesmo tamanho.")
+    res = []
+    for i in range(len(v1)):
+        res.append(v1[i] + v2[i])
+    return tuple(res)
+
+
+def inverter(v):
+    res = []
+    for i in range(len(v)):
+        res.append(-v[i])
+    return tuple(res)
+
+
+def subtrair(v1,v2):
+    return somar(v1, inverter(v2))
+
+
+def multiplicar(vet,num):
+    return (num * vet[0], num * vet[1])
+
+
+def produto_escalar(v1,v2):
+    for i in range(len(v1)):
+        if len(v1) != len(v2):
+            raise ValueError("Os vetores devem ter o mesmo tamanho.")
+    soma = 0
+    for i in range(len(v1)):
+        soma += v1[i] * v2[i]
+    return soma
+
+
+if __name__ == '__main__':
+    a = (1,5)
+    b = (1.5,7.0)
+    num = 4
+
+    print(f'Soma dos vetores {a} e {b}', somar(a,b))
+    print(f'Diferença dos vetores {a} e {b}', subtrair(a,b))
+    print(f'Multiplicação de {a} por {num}', multiplicar(a,b))
+    print(f'Produto escalar entre {a} e {b}', produto_escalar(a,b))
+
+
